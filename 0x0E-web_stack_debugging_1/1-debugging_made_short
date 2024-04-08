@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+
+# Update Nginx configuration to listen on port 80 
+
+# This line modifies the default Nginx configuration file (/etc/nginx/sites-enabled/default)
+# to replace all occurrences of port 8080 with port 80. 
+# Use caution as this could break your server configuration if not done correctly.
+sed -i 's/8080/80/g' /etc/nginx/sites-enabled/default
+
+# Restart the Nginx service to apply the changes
+sudo service nginx restart
+
+# Terminate any running Nginx process using kills
+# This command forcefully terminates the Nginx process using signal 9. 
+# It's generally not recommended as it can lead to data loss. 
+# Use only if the service restart fails.
+kill -9 "$(cat /var/run/nginx.pid)"
+
