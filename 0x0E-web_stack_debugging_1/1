@@ -1,3 +1,2 @@
-./0-nginx_likes_port_80: line 1: !/usr/bin/env: No such file or directory
  * Restarting nginx nginx
-   ...done.
+   ...fail!
