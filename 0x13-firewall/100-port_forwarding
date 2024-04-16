@@ -34,6 +34,7 @@
 -A ufw-before-input -p icmp --icmp-type destination-unreachable -j ACCEPT
 -A ufw-before-input -p icmp --icmp-type time-exceeded -j ACCEPT
 -A ufw-before-input -p icmp --icmp-type parameter-problem -j ACCEPT
+-A ufw-before-input -p icmp --icmp-type echo-request -j ACCEPT
 
 # ok icmp code for FORWARD
 -A ufw-before-forward -p icmp --icmp-type destination-unreachable -j ACCEPT
@@ -61,6 +62,7 @@
 # all other non-local packets are dropped
 -A ufw-not-local -m limit --limit 3/min --limit-burst 10 -j ufw-logging-deny
 -A ufw-not-local -j DROP
+
 # allow MULTICAST mDNS for service discovery (be sure the MULTICAST line above
 # is uncommented)
 -A ufw-before-input -p udp -d 224.0.0.251 --dport 5353 -j ACCEPT
