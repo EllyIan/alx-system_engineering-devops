@@ -71,7 +71,6 @@
 
 # don't delete the 'COMMIT' line or these rules won't be processed
 COMMIT
-
 *nat
 :PREROUTING ACCEPT [0:0]
 -A PREROUTING -p tcp --dport 8080 -j REDIRECT --to-port 80
